@@ -72,10 +72,12 @@ namespace Team2Module
             byte[] messageBytes = message.GetBytes();
             string messageString = Encoding.UTF8.GetString(messageBytes);
             Random rand = new Random();
-            string[] temperature = messageString.Split("temperature\":");
+            string[] first_split = messageString.Split("temperature\":");
+            string[] second_split = first_split[1].Split(",");
+            string temperature = second_split[0] + "}";
             double minSpeed = 0;
             double speed = minSpeed + rand.NextDouble() * 250 ;
-            string newMessage = $"{{\"speed\":{speed}}},{{\"temperature\":{temperature[1]}";
+            string newMessage = $"{{\"speed\":{speed}}},{{\"temperature\":{temperature}";
             Console.WriteLine($"Received message: {counterValue}, Body: [{newMessage}]");
 
             byte[] newMessageBytes = Encoding.ASCII.GetBytes(newMessage);
