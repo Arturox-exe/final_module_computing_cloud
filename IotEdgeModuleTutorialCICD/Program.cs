@@ -76,9 +76,13 @@ namespace Team2Module
             string[] second_split = first_split[1].Split(",");
             string temperature = second_split[0] + "}";
             double minSpeed = 0;
-            double speed = minSpeed + rand.NextDouble() * 250 ;
+            double speed = minSpeed + rand.NextDouble() * 300 ;
             string newMessage = $"{{\"speed\":{speed}}},{{\"temperature\":{temperature}";
             Console.WriteLine($"Received message: {counterValue}, Body: [{newMessage}]");
+
+            if(speed > 250){
+                Console.WriteLine("The car goes too fast");
+            }
 
             byte[] newMessageBytes = Encoding.ASCII.GetBytes(newMessage);
             if (!string.IsNullOrEmpty(newMessage))
