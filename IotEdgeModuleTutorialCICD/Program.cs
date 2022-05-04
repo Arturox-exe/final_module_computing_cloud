@@ -77,7 +77,7 @@ namespace Team2Module
             string temperature = second_split[0] + "}";
             double minSpeed = 0;
             double speed = minSpeed + rand.NextDouble() * 300 ;
-            string newMessage = $"{{\"speed\":{speed}}},{{\"temperature\":{temperature}";
+            string newMessage = $"{{\"speed\":{speed},\"temperature\":{temperature}";
             Console.WriteLine($"Received message: {counterValue}, Body: [{newMessage}]");
 
             if(speed > 250){
